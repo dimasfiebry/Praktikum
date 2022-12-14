@@ -1,0 +1,132 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class ProjectUAP {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Random random = new Random();
+        int ulang=0, coba=0;
+        String bebas;
+        do {
+            ulang = 0;
+            System.out.print("Selamat datang di Kereta Api Mahasiswa" +
+                    "\n--------------------------------------------------" +
+                    "\nSilahkan login menggunakan nama dan Nomor Induk Mahasiswa" +
+                    "\nNama lengkap\t\t\t: ");
+            String nama = input.nextLine();
+            System.out.print("Silahkan masukkan NIM\t: ");
+            String nim = input.next();
+            String key = nim.substring(11,15);
+
+            System.out.print("\n--------------------------------------------------" +
+                    "\nHalo " + nama + " silahkan pilih menu berikut" +
+                    "\n1. Beli Tiket" +
+                    "\n2. Cari Tempat Duduk\n\n" +
+                    "pilihan\t : ");
+
+            int pilih = input.nextInt();
+            if (pilih == 1) {
+                System.out.print("\n--------------------------------------------------" +
+                        "\nSilahkan pilih stasiun keberangkatan dan tujuan anda" +
+                        "\nKeberangkatan\t: ");
+                String kbr = input.next();
+                System.out.print("Tujuan\t\t\t: ");
+                String tj = input.next();
+                System.out.println("\n--------------------------------------------------" +
+                        "\nTIKET KERETA API MAHASISWA" +
+                        "\n--------------------------------------------------" +
+                        "\n" + nama +
+                        "\nKeberangkatan stasiun\t: " + kbr +
+                        "\nTujuan stasiun\t\t\t: " + tj);
+                int gerbong = random.nextInt(3)+1;
+                int deret = random.nextInt(7)+1;
+                int kursi = random.nextInt(10) + 1;
+
+                System.out.println("\nKode Tiket : " +
+                        key +
+                        "00" + gerbong +
+                        "0" + deret +
+                        kursi);
+                System.out.println("\n--------------------------------------------------" +
+                        "\nTerima kasih silahkan sampaikan pada kasir dan lengkapi pembayaran");
+
+            } else if (pilih == 2) {
+                System.out.print("\n--------------------------------------------------" +
+                        "\nSilahkan masukkan kode tiket anda : ");
+                String  kode = input.next();
+                System.out.println("--------------------------------------------------");
+                System.out.println("INFORMASI TEMPAT DUDUK\n\n" +
+                        nama);
+                String gerbong = kode.substring(5,7);
+                switch (gerbong){
+                    case "01" :
+                        System.out.print("Gerbong 01 ");
+                        break;
+                    case "02" :
+                        System.out.print("Gerbong 02 ");
+                        break;
+                    case "03" :
+                        System.out.print("Gerbong 03 ");
+                } String deret = kode.substring(7,9);
+                switch (deret){
+                    case "01" :
+                        System.out.print("Kursi A");
+                        break;
+                    case "02" :
+                        System.out.print("Kursi B");
+                        break;
+                    case "03" :
+                        System.out.print("Kursi C");
+                        break;
+                    case "04" :
+                        System.out.print("Kursi D");
+                } String kursi = kode.substring(9,10);
+                switch (kursi){
+                    case "1" :
+                        System.out.print("01");
+                        break;
+                    case "2" :
+                        System.out.print("02");
+                        break;
+                    case "3" :
+                        System.out.print("03");
+                        break;
+                    case "4" :
+                        System.out.print("04");
+                        break;
+                    case "5" :
+                        System.out.print("05");
+                        break;
+                    case "6" :
+                        System.out.print("06");
+                        break;
+                    case "7" :
+                        System.out.print("07");
+                        break;
+                    case "8" :
+                        System.out.print("08");
+                        break;
+                    case "9" :
+                        System.out.print("09");
+                        break;
+                    case "10" :
+                        System.out.print("10");
+                }
+            }input.nextLine();
+            do {coba = 0;
+                System.out.println("\nMau coba lagi?\n'Yes' or 'No'?");
+                bebas = input.nextLine();
+                if (bebas.equals("Yes")) {
+                    ulang = 1;
+                } else if (bebas.equals("No")) {
+                    ulang = 0;
+                } else {
+                    System.out.println("Inputan Salah, Tolong Input 'Yes' Atau 'No'!");
+                    coba = 1;
+                }
+            }while(coba==1);
+
+        }while (ulang == 1);
+        System.out.println("Terima Kasih Sudah Menggunakan Kereta Api Mahasiswa");
+    }
+}
